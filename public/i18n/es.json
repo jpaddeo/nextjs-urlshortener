@@ -1,0 +1,20 @@
+{
+  "head": {
+    "title": "SURL - Acortador de URLs",
+    "meta": {
+      "description": "Servicio gratuito que permite acortar URLs para utilizar en Redes Sociales, Blogs, Documentos, etcétera",
+      "og": {
+        "title": "SURL - Acortador de URLs",
+        "description": "Servicio gratuito que permite acortar URLs para utilizar en Redes Sociales, Blogs, Documentos, etcétera",
+        "url": "https://surl.jpa.dev",
+        "type": "website"
+      }
+    }
+  },
+  "index": {
+    "pastewrite": "Pegá o escribí tu URL completa",
+    "instructions": "Ingresar su URL en formato completo (http[s]://<url>). Luego, presioná el botón 'acort(ar)'",
+    "search": "acort(ar)",
+    "urlplaceholder": "Ingrese aquí su URL"
+  }
+}
