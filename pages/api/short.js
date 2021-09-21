@@ -10,9 +10,10 @@ export default async (req, res) => {
     const data = await prisma.link.create({
       data: { url, shortUrl, accessCount: 0 },
     });
+    await prisma.$disconnect();
     return res.status(200).send(data);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send({ error });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ error: err.message });
   }
 };

@@ -5,7 +5,6 @@ import Image from 'next/image';
 import copy from 'copy-to-clipboard';
 
 import { useTranslate } from '../hooks/useTranslate';
-import short from './api/short';
 
 export default function Home() {
   const { lang, loading } = useTranslate();
@@ -26,7 +25,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setShortUrl(data.shortUrl);
+        setShortUrl(process.env.NEXT_PUBLIC_URL + "/" + data.shortUrl);
       });
   };
 
@@ -69,13 +68,13 @@ export default function Home() {
               <input
                 ref={urlRef}
                 name='url'
-                className='text-base text-gray-400 flex-grow outline-none px-2'
+                className='text-base text-gray-500 flex-grow outline-none px-2'
                 type='text'
                 placeholder={lang.index.urlplaceholder}
               />
               <div className='sm:flex items-center px-2 rounded-lg space-x-4 mx-auto'>
                 <button
-                  className='bg-blue-600 text-white text-base rounded-lg px-4 py-2'
+                  className='bg-blue-600 text-white text-base rounded-lg px-4 py-2 hover:font-bold hover:scale-95'
                   onClick={handleShort}
                 >
                   {lang.index.search}
@@ -83,13 +82,17 @@ export default function Home() {
               </div>
             </div>
           </form>
-          <div className='flex items-center justify-between bg-gray-400 w-full rounded-xl p-3'>
-            <code className=''>{shortUrl || 'lalalala'}</code>
+          <div
+            className={`flex items-center justify-between bg-gray-400 w-full rounded-xl p-3 ${
+              !shortUrl?.length ? 'hidden' : ''
+            }`}
+          >
+            <code>{shortUrl}</code>
             <Image
               src='/img/copy.svg'
               width={28}
               height={28}
-              className='cursor-pointer hover:text-blue-600 hover:opacity-50 transform hover:scale-95'
+              className='cursor-pointer hover:text-blue-600 hover:opacity-60 transform hover:scale-95'
               onClick={handleCopyClick}
             />
           </div>
@@ -99,12 +102,11 @@ export default function Home() {
       <footer className='flex items-center justify-center w-full h-24 border-t'>
         <a
           className='flex items-center justify-center'
-          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
+          href='https://github.com/jpaddeo'
           target='_blank'
           rel='noopener noreferrer'
         >
-          Powered by{' '}
-          <img src='/vercel.svg' alt='Vercel Logo' className='h-4 ml-2' />
+          Made with love by JPA
         </a>
       </footer>
     </div>
