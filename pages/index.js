@@ -1,7 +1,11 @@
 import { useRef, useState } from 'react';
 
 import Head from 'next/head';
+import Image from 'next/image';
+import copy from 'copy-to-clipboard';
+
 import { useTranslate } from '../hooks/useTranslate';
+import short from './api/short';
 
 export default function Home() {
   const { lang, loading } = useTranslate();
@@ -26,6 +30,12 @@ export default function Home() {
       });
   };
 
+  const handleCopyClick = () => {
+    if (shortUrl.length) {
+      copy(shortUrl);
+    }
+  };
+
   return (
     <div className='flex flex-col items-center justify-center min-h-screen py-2'>
       <Head>
@@ -47,34 +57,41 @@ export default function Home() {
             S-URL!
           </a>
         </h1>
-        <div className='bg-gray-100 flex justify-center items-center'>
-          <div className='container mx-auto bg-blue-600 rounded-lg p-14'>
-            <form>
-              <h1 className='text-center font-bold text-white text-4xl'>
-                {lang.index.pastewrite}
-              </h1>
-              <p className='mx-auto font-normal text-sm my-6 max-w-lg'>
-                {lang.index.instructions}
-              </p>
-              <div className='sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between'>
-                <input
-                  ref={urlRef}
-                  name='url'
-                  className='text-base text-gray-400 flex-grow outline-none px-2 '
-                  type='text'
-                  placeholder={lang.index.urlplaceholder}
-                />
-                <div className='ms:flex items-center px-2 rounded-lg space-x-4 mx-auto'>
-                  <button
-                    className='bg-blue-600 text-white text-base rounded-lg px-4 py-2'
-                    onClick={handleShort}
-                  >
-                    {lang.index.search}
-                  </button>
-                </div>
+        <div className='flex flex-col items-center justify-center space-y-5 mx-auto bg-blue-600 rounded-lg p-14 w-3/4'>
+          <form className='w-full'>
+            <h1 className='text-center font-bold text-white text-4xl'>
+              {lang.index.pastewrite}
+            </h1>
+            <p className='mx-auto font-normal text-sm my-6'>
+              {lang.index.instructions}
+            </p>
+            <div className='sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between'>
+              <input
+                ref={urlRef}
+                name='url'
+                className='text-base text-gray-400 flex-grow outline-none px-2'
+                type='text'
+                placeholder={lang.index.urlplaceholder}
+              />
+              <div className='sm:flex items-center px-2 rounded-lg space-x-4 mx-auto'>
+                <button
+                  className='bg-blue-600 text-white text-base rounded-lg px-4 py-2'
+                  onClick={handleShort}
+                >
+                  {lang.index.search}
+                </button>
               </div>
-            </form>
-            <code>{shortUrl}</code>
+            </div>
+          </form>
+          <div className='flex items-center justify-between bg-gray-400 w-full rounded-xl p-3'>
+            <code className=''>{shortUrl || 'lalalala'}</code>
+            <Image
+              src='/img/copy.svg'
+              width={28}
+              height={28}
+              className='cursor-pointer hover:text-blue-600 hover:opacity-50 transform hover:scale-95'
+              onClick={handleCopyClick}
+            />
           </div>
         </div>
       </main>

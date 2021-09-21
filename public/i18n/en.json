@@ -13,8 +13,8 @@
   },
   "index": {
     "pastewrite": "Past or write your complete URL",
-    "instructions": "Enter your URL in complete format (http[s]://<url>). Then press 'short(it)' button",
-    "search": "short(it)",
+    "instructions": "Enter your URL in complete format (http[s]://xxx.yyy). Then press 'short.it' button",
+    "search": "short.it",
     "urlplaceholder": "URL here"
   }
 }

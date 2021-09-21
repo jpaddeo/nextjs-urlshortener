@@ -13,8 +13,8 @@
   },
   "index": {
     "pastewrite": "Pegá o escribí tu URL completa",
-    "instructions": "Ingresar su URL en formato completo (http[s]://<url>). Luego, presioná el botón 'acort(ar)'",
-    "search": "acort(ar)",
+    "instructions": "Ingresar su URL en formato completo (http[s]://xxx.yyy). Luego, presioná el botón 'acort.ar'",
+    "search": "acort.ar",
     "urlplaceholder": "Ingrese aquí su URL"
   }
 }
