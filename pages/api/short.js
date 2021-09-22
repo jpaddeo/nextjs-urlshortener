@@ -4,9 +4,18 @@ const prisma = new PrismaClient();
 
 export default async (req, res) => {
   const { url } = req.body;
-  const shortUrl = Math.random().toString(36).substr(2, 5);
+  const shortUrl = Math.random().toString(36).substr(2, 7);
 
   try {
+    const existing = await prisma.link.findUnique({
+      where: {
+        url,
+      },
+    });
+    if (existing) {
+      await prisma.$disconnect();
+      return res.status(200).send(existing);
+    }
     const data = await prisma.link.create({
       data: { url, shortUrl, accessCount: 0 },
     });

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import copy from 'copy-to-clipboard';
 
 import { useTranslate } from '../hooks/useTranslate';
+import LangSwitcher from '../components/LangSwitcher';
 
 export default function Home() {
   const { lang, loading } = useTranslate();
@@ -25,7 +26,7 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setShortUrl(process.env.NEXT_PUBLIC_URL + "/" + data.shortUrl);
+        setShortUrl(process.env.NEXT_PUBLIC_URL + '/' + data.shortUrl);
       });
   };
 
@@ -57,6 +58,7 @@ export default function Home() {
           </a>
         </h1>
         <div className='flex flex-col items-center justify-center space-y-5 mx-auto bg-blue-600 rounded-lg p-14 w-3/4'>
+          <LangSwitcher />
           <form className='w-full'>
             <h1 className='text-center font-bold text-white text-4xl'>
               {lang.index.pastewrite}
