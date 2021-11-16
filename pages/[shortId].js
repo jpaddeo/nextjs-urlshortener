@@ -1,24 +1,24 @@
-import { PrismaClient } from '@prisma/client';
+import { getURLbyShortLink, updateShortLinkClicks } from '../libs/db';
 
-export default function ShortId() {
-  return (
-    <>
-      <p>ShortId Redirect</p>
-    </>
-  );
+export default function ShortIdPage() {
+  return <div>ShortID Redirect</div>;
 }
 
 export async function getServerSideProps({ params }) {
-  const prisma = new PrismaClient();
   const { shortId } = params;
+  const data = await getURLbyShortLink(shortId);
 
-  const data = await prisma.link.findUnique({ where: { shortUrl: shortId } });
   if (!data) {
-    return { redirect: { destination: '/' } };
+    return {
+      redirect: { destination: '/' },
+    };
   }
-  const updatedData = await prisma.link.update({
-    where: { shortUrl: shortId },
-    data: { accessCount: { increment: 1 } },
-  });
-  return { redirect: { destination: updatedData.url } };
+
+  await updateShortLinkClicks(shortId, data);
+
+  return {
+    redirect: {
+      destination: data.url,
+    },
+  };
 }

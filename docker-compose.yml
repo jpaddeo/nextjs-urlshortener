@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  urlshortener_db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=url-shortener
+      - POSTGRES_PASSWORD=SjL2A9hc5kERsAbM
+    volumes:
+      - ./export/postgres:/data
+    ports:
+      - 5432:5432
+
+  urlshortener_app:
+    ports:
+      - 3100:3000
+    working_dir: /app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL='postgresql://postgres:SjL2A9hc5kERsAbM@urlshortener_db:5432/url-shortener?schema=public'
+      - NEXT_PUBLIC_URL=http://localhost:3000

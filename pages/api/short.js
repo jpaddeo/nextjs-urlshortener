@@ -17,7 +17,7 @@ export default async (req, res) => {
       return res.status(200).send(existing);
     }
     const data = await prisma.link.create({
-      data: { url, shortUrl, accessCount: 0 },
+      data: { url, shortUrl, clicks: 0 },
     });
     await prisma.$disconnect();
     return res.status(200).send(data);
