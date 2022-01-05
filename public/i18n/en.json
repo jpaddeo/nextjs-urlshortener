@@ -15,6 +15,8 @@
     "pastewrite": "Past or write your complete URL",
     "instructions": "Enter your URL in complete format (http[s]://xxx.yyy). Then press 'short.it' button",
     "search": "short.it",
-    "urlplaceholder": "URL here"
+    "urlplaceholder": "URL here",
+    "login": "Login",
+    "resultShortUrlCopied": "Shorted url copied to clipboard"
   }
 }

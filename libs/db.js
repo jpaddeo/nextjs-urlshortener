@@ -3,8 +3,16 @@ import { PrismaClient } from '@prisma/client';
 export const createShortLink = async (url, shortUrl, userId) => {
   const prisma = new PrismaClient();
 
-  const linkData = await prisma.link.create({
-    data: { url, shortUrl, userId },
+  const linkData = await prisma.link.upsert({
+    where: {
+      url,
+    },
+    update: {},
+    create: {
+      url,
+      shortUrl,
+      userId,
+    },
   });
 
   await prisma.user.update({

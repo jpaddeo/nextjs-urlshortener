@@ -1,26 +1,17 @@
-import { PrismaClient } from '@prisma/client';
+import { getSession } from '@auth0/nextjs-auth0';
 
-const prisma = new PrismaClient();
+import { getUserByEmail, createShortLink } from '../../libs/db';
 
 export default async (req, res) => {
+  const { user } = await getSession(req, res);
   const { url } = req.body;
   const shortUrl = Math.random().toString(36).substr(2, 7);
 
   try {
-    const existing = await prisma.link.findUnique({
-      where: {
-        url,
-      },
-    });
-    if (existing) {
-      await prisma.$disconnect();
-      return res.status(200).send(existing);
-    }
-    const data = await prisma.link.create({
-      data: { url, shortUrl, clicks: 0 },
-    });
-    await prisma.$disconnect();
-    return res.status(200).send(data);
+    const dbUser = await getUserByEmail(user.email);
+    const data = await createShortLink(url, shortUrl, dbUser.id);
+
+    return res.status(200).json({ data });
   } catch (err) {
     console.log(err);
     return res.status(500).send({ error: err.message });
