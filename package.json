@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "start:docker": "next build && next start"
+    "start:docker": "next build && next start",
+    "postinstall": "npx -y prisma generate && npx -y prisma deploy"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "1.6.1",
