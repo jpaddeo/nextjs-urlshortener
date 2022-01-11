@@ -34,6 +34,12 @@ Reset your database and apply all migrations
 prisma migrate reset
 ```
 
+Generating the client to connect the database in production/staging
+
+```bash
+prisma generate
+```
+
 Apply pending migrations to the database in production/staging
 
 ```bash
