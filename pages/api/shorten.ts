@@ -30,6 +30,8 @@ export default async function handler(
         shortURL,
       },
     });
-    res.status(200).json({ shortURL });
+    res
+      .status(200)
+      .json({ longURL, shortURL: `http://localhost:3000/${shortURL}` });
   }
 }

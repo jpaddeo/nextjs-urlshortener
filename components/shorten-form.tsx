@@ -6,6 +6,11 @@ import toast from 'react-hot-toast';
 
 import LoadingDots from '@/components/loading-dots';
 
+const handleCopyClick = (text: string) => () => {
+  toast.success('Copied to clipboard');
+  navigator.clipboard.writeText(text);
+};
+
 export default function ShortenerForm() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState('');
@@ -51,7 +56,7 @@ export default function ShortenerForm() {
         />
       </div>
       {result && (
-        <div>
+        <div className='relative'>
           <label
             htmlFor='short_url'
             className='block text-xs text-gray-600 uppercase'
@@ -62,10 +67,16 @@ export default function ShortenerForm() {
             id='short_url'
             name='short_url'
             type='text'
-            value={`http://localhost:3000/${result}`}
+            value={result}
             className='mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm bg-slate-200'
             readOnly={true}
           />
+          <span
+            className='absolute right-0 top-6 mr-2'
+            onClick={handleCopyClick(result)}
+          >
+            copy
+          </span>
         </div>
       )}
 

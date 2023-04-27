@@ -35,6 +35,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  openGraph: {
+    title: 'URL Shortener',
+    siteName: 'URL Shortener',
+    description: 'URL Shortener application',
+  },
   twitter: {
     title: 'URL Shortener',
     card: 'summary_large_image',
