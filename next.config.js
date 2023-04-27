@@ -1,10 +1,12 @@
-module.exports = {
-  // reactStrictMode: true,
-  i18n: {
-    locales: ['es', 'en'],
-    defaultLocale: 'es',
-  },
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+  reactStrictMode: true,
   experimental: {
-    outputStandalone: true,
+    appDir: true,
+    serverComponentsExternalPackages: ["prisma", "@prisma/client"],
   },
 };
+
+module.exports = nextConfig;

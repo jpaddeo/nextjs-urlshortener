@@ -1,28 +1,43 @@
 version: '3.7'
 
 services:
+  urlshortener_adminer:
+    image: adminer:4.8.1
+    container_name: urlshortener_adminer
+    restart: unless-stopped
+    ports:
+      - '8088:8080'
+    networks:
+      - urlshortener_network
   urlshortener_db:
-    image: postgres
+    image: mariadb:10.11.2
+    container_name: urlshortener_db
+    restart: unless-stopped
+    expose:
+      - '3306'
     environment:
-      - POSTGRES_DB=url-shortener
-      - POSTGRES_PASSWORD=XXXXXXXXXXXXXXXXXXXXXXXXXX
+      MYSQL_ROOT_HOST: urlshortener_db
+      MYSQL_ROOT_PASSWORD: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      MYSQL_DATABASE: urlshortener
+      MYSQL_USER: urlshortener_user
+      MYSQL_PASSWORD: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     volumes:
-      - ./export/postgres:/data
-    ports:
-      - 5432:5432
+      - ./export/mysql:/var/lib/mysql
+    networks:
+      - urlshortener_network
 
-  urlshortener_app:
+  urlshortener_redis:
+    container_name: urlshortener_redis
+    image: redis:6.2.5
+    command: redis-server --requirepass XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --appendonly yes
+    restart: unless-stopped
     ports:
-      - 3100:3000
-    working_dir: /app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    environment:
-      - DATABASE_URL='postgresql://postgres:XXXXXXXXXXXXXXXXXXXXXX@urlshortener_db:5432/url-shortener?schema=public'
-      - NEXT_PUBLIC_URL=http://localhost:3100
-      - AUTH0_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-      - AUTH0_BASE_URL=http://localhost:3100
-      - AUTH0_ISSUER_BASE_URL=https://dev-dfeqa7nd.us.auth0.com
-      - AUTH0_CLIENT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-      - AUTH0_CLIENT_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      - 6379:6379
+    volumes:
+      - ./export/redis:/data
+    networks:
+      - urlshortener_network
+
+networks:
+  urlshortener_network:
+    driver: bridge
