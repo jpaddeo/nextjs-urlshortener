@@ -3,11 +3,20 @@
     "title": "SURL - Url Shortener",
     "meta": {
       "description": "Free service to shorts url",
-      "og": {
+      "twitter": {
+        "card": "summary_large_image",
+        "url": "https://sl.jpa.dev",
+        "creator": "@jpaddeo",
         "title": "SURL - Url Shortener",
         "description": "Free service to shorts url",
-        "url": "https://surl.jpa.dev",
-        "type": "website"
+        "image": "https://sl.jpa.dev/img/surl.png"
+      },
+      "og": {
+        "type": "website",
+        "url": "https://sl.jpa.dev",
+        "title": "SURL - Url Shortener",
+        "description": "Free service to shorts url",
+        "image": "https://sl.jpa.dev/img/surl.png"
       }
     }
   },
@@ -17,6 +26,11 @@
     "search": "short.it",
     "urlplaceholder": "URL here",
     "login": "Login",
-    "resultShortUrlCopied": "Shorted url copied to clipboard"
+    "resultShortUrlCopied": "Shorted url copied to clipboard",
+    "copy": "Copy"
+  },
+  "footer": {
+    "madewith": "made with",
+    "madewithby": "by"
   }
 }
