@@ -1,6 +1,6 @@
 # Url Shortener
 
-Use it for free [Url Shortener](http://ushort.jpaddeo.xyz/)
+Use it for free [Url Shortener](http://shl.ar/)
 
 # Deploy
 
