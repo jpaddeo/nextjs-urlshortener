@@ -6,7 +6,7 @@ const LangSwitcher = () => {
   return (
     <select
       defaultValue={locale}
-      onChange={changeLocale}
+      onChange={(ev) => changeLocale(ev.target.value)}
       className='cursor-pointer p-1 uppercase bg-transparent text-white font-semibold hover:opacity-80 transform transition duration-100 focus-visible:rounded-none'
     >
       {locales.map((loc) => (
