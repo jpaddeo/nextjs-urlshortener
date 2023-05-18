@@ -1,16 +1,13 @@
-import { useTranslate } from '@/hooks/useTranslate';
 import { CopyIcon, LinkIcon } from '@/components/icons';
 
 export default function ShortedCard({ origin, shorted }) {
-  const { lang } = useTranslate();
-
   const handleCopyLink = (event, shorted) => {
     event.preventDefault();
     navigator.clipboard.writeText(shorted);
   };
 
   return (
-    <div className='flex items-center justify-center mx-auto mt-4'>
+    <div className='flex items-center justify-center mx-auto mt-4 animate-shake animate-twice'>
       <div className='flex flex-col lg:flex-row items-center justify-between gap-2 w-3/4 p-4 rounded-lg bg-gray-200 shadow-lg'>
         <span className='text-gray-500 font-semibold flex-shrink'>
           {origin}
