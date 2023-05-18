@@ -13,40 +13,36 @@ export default function Header() {
   const { lang } = useTranslate();
 
   return (
-    <nav className='bg-gray-800'>
-      <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
-        <div className='relative flex h-16 items-center justify-between gap-2'>
-          <div className='flex flex-1 items-stretch justify-start'>
-            <div className='ml-6 block'>
-              <div className='flex space-x-4'>
-                <Logo />
-              </div>
-            </div>
+    <nav className='bg-gray-800 mx-auto px-8 sm:px-12 lg:px-16 relative flex h-16 items-center justify-between gap-2'>
+      <div className='flex flex-1 items-stretch justify-start'>
+        <div className='ml-6 block'>
+          <div className='flex space-x-4'>
+            <Logo />
           </div>
-          <LangSwitcher />
-          {user ? (
-            <div className='flex items-center justify-center gap-1'>
-              <Avatar user={user} />
-              <a
-                href='/api/auth/logout'
-                className='text-white'
-                alt={lang?.index?.logout}
-              >
-                <LogoutIcon />
-              </a>
-            </div>
-          ) : (
-            <div className='flex items-center justify-center gap-2'>
-              <a
-                href={CONFIG.LOGIN_API_URL}
-                className='text-white font-semibold border-2 hover:border-dashed hover:border-slate-500 p-2 rounded-xl'
-              >
-                {lang?.index?.login}
-              </a>
-            </div>
-          )}
         </div>
       </div>
+      <LangSwitcher />
+      {user ? (
+        <div className='flex items-center justify-center gap-1'>
+          <Avatar user={user} />
+          <a
+            href='/api/auth/logout'
+            className='text-white'
+            alt={lang?.index?.logout}
+          >
+            <LogoutIcon />
+          </a>
+        </div>
+      ) : (
+        <div className='flex items-center justify-center gap-2'>
+          <a
+            href={CONFIG.LOGIN_API_URL}
+            className='text-white font-semibold border-2 hover:border-dashed hover:border-slate-500 p-2 rounded-xl'
+          >
+            {lang?.index?.login}
+          </a>
+        </div>
+      )}
     </nav>
   );
 }
