@@ -27,7 +27,8 @@
     "urlplaceholder": "Ingrese aquí su URL",
     "login": "Ingresar",
     "resultShortUrlCopied": "Se copió la url al portapapeles",
-    "copy": "Copiar"
+    "copy": "Copiar",
+    "getStarted": "Empezar"
   },
   "footer": {
     "madewith": "hecho con",

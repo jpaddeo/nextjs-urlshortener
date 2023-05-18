@@ -7,6 +7,7 @@ import { useLinksStore } from '@/store/links';
 import Layout from '@/components/Layout';
 import ShortenCard from '@/components/ShortenCard';
 import ShortedCard from '@/components/ShortedCard';
+import Hero from '@/components/partials/Hero';
 
 export default function Home() {
   const fetchUserLinks = useLinksStore((state) => state.fetchUserLinks);
@@ -18,14 +19,17 @@ export default function Home() {
 
   return (
     <Layout>
-      <ShortenCard />
-      {userLinks?.map(({ url, shortUrl }) => (
-        <ShortedCard
-          key={shortUrl}
-          origin={url}
-          shorted={`${CONFIG.NEXT_PUBLIC_URL}/${shortUrl}`}
-        />
-      ))}
+      <Hero />
+      <section className='bg-gray-100 py-6'>
+        <ShortenCard />
+        {userLinks?.map(({ url, shortUrl }) => (
+          <ShortedCard
+            key={shortUrl}
+            origin={url}
+            shorted={`${CONFIG.NEXT_PUBLIC_URL}/${shortUrl}`}
+          />
+        ))}
+      </section>
     </Layout>
   );
 }
