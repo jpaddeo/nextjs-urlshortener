@@ -30,6 +30,12 @@
     "copy": "Copiar",
     "getStarted": "Empezar"
   },
+  "hero": {
+    "description": "Increíblemente rápido y gratis",
+    "description2": "siempre",
+    "subdescription": "Tus links a un sólo click de distancia",
+    "getStarted": "Get started"
+  },
   "footer": {
     "madewith": "hecho con",
     "madewithby": "por"

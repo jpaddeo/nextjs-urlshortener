@@ -27,7 +27,12 @@
     "urlplaceholder": "URL here",
     "login": "Login",
     "resultShortUrlCopied": "Shorted url copied to clipboard",
-    "copy": "Copy",
+    "copy": "Copy"
+  },
+  "hero": {
+    "description": "Blazing fast and free",
+    "description2": "forever",
+    "subdescription": "Your beauty links are just one click away",
     "getStarted": "Get started"
   },
   "footer": {
