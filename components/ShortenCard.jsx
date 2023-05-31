@@ -50,9 +50,11 @@ export default function ShortenCard() {
           >
             <span>{lang?.index?.search}</span>
           </button>
-          <span class='group-hover:opacity-100 transition-opacity bg-gray-800 px-4 text-sm text-gray-100 rounded-md absolute -left-10 -bottom-24 md:left-28 md:-bottom-8 opacity-0 m-4 mx-auto w-40 py-2'>
-            {lang?.index?.loginLegend}
-          </span>
+          {!user && (
+            <span className='group-hover:opacity-100 transition-opacity bg-gray-800 px-4 text-sm text-gray-100 rounded-md absolute -left-10 -bottom-24 md:left-28 md:-bottom-8 opacity-0 m-4 mx-auto w-40 py-2'>
+              {lang?.index?.loginLegend}
+            </span>
+          )}
         </div>
       </div>
     </div>
