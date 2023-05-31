@@ -28,7 +28,7 @@
     "login": "Ingresar",
     "resultShortUrlCopied": "Se copió la url al portapapeles",
     "copy": "Copiar",
-    "getStarted": "Empezar"
+    "loginLegend": "Ingresá para generar tus links y compartirlos a todos"
   },
   "hero": {
     "description": "Increíblemente rápido y gratis",

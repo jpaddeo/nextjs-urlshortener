@@ -23,7 +23,7 @@ export default function Hero() {
         {!user && (
           <a
             href={CONFIG.LOGIN_API_URL}
-            className='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded'
+            className='bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg border-2 border-white hover:border-dashed'
           >
             {lang?.hero?.getStarted}
           </a>

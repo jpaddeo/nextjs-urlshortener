@@ -27,7 +27,8 @@
     "urlplaceholder": "URL here",
     "login": "Login",
     "resultShortUrlCopied": "Shorted url copied to clipboard",
-    "copy": "Copy"
+    "copy": "Copy",
+    "loginLegend": "Login to generate and share your links arround the world"
   },
   "hero": {
     "description": "Blazing fast and free",
