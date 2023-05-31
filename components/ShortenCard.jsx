@@ -42,13 +42,18 @@ export default function ShortenCard() {
           placeholder='https://jpaddeo.work'
           className='w-full p-2 rounded-lg text-gray-700 font-medium'
         />
-        <button
-          disabled={!user}
-          onClick={handleShortUrl}
-          className='border-2 border-white hover:border-dashed rounded-xl p-2 text-white font-medium disabled:cursor-not-allowed'
-        >
-          <span>{lang?.index?.search}</span>
-        </button>
+        <div className='group flex relative'>
+          <button
+            disabled={!user}
+            onClick={handleShortUrl}
+            className='border-2 border-white hover:border-dashed rounded-xl p-2 text-white font-medium disabled:cursor-not-allowed'
+          >
+            <span>{lang?.index?.search}</span>
+          </button>
+          <span class='group-hover:opacity-100 transition-opacity bg-gray-800 px-4 text-sm text-gray-100 rounded-md absolute -left-10 -bottom-24 md:left-28 md:-bottom-8 opacity-0 m-4 mx-auto w-40 py-2'>
+            {lang?.index?.loginLegend}
+          </span>
+        </div>
       </div>
     </div>
   );
