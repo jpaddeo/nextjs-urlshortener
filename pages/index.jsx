@@ -15,18 +15,19 @@ export default function Home() {
 
   useEffect(() => {
     fetchUserLinks();
-  }, []);
+  }, [userLinks]);
 
   return (
     <Layout>
       <Hero />
-      <section className='bg-gray-100 py-6'>
+      <section className='bg-gray-100 py-6 flex-1'>
         <ShortenCard />
-        {userLinks?.map(({ url, shortUrl }) => (
+        {userLinks?.map(({ url, shortUrl, clicks }) => (
           <ShortedCard
             key={shortUrl}
             origin={url}
             shorted={`${CONFIG.NEXT_PUBLIC_URL}/${shortUrl}`}
+            clicks={clicks}
           />
         ))}
       </section>

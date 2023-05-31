@@ -6,17 +6,24 @@ export default function ShortIdPage() {
   return <div>ShortID Redirect</div>;
 }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, req }) {
   const { shortId } = params;
-
+  /*
+  const { headers, connection } = req;
+  const forwarded = headers['x-forwarded-for'];
+  const ip = forwarded ? forwarded.split(/, /)[0] : connection.remoteAddress;
+  */
+ 
   try {
     const cachedData = await rGet(shortId);
-    if (cachedData)
+    if (cachedData) {
+      await link.incrementClick(cachedData);
       return {
         redirect: {
           destination: cachedData.url,
         },
       };
+    }
   } catch (error) {
     console.error(error);
   }

@@ -13,6 +13,7 @@ const link = {
   getByUserId: async (userId) => {
     const data = await prisma.link.findMany({
       where: { userId },
+      orderBy: [{ clicks: 'desc' }],
     });
     return data;
   },
@@ -44,7 +45,7 @@ const link = {
   incrementClick: async (pLink) => {
     const response = await prisma.link.update({
       where: { shortUrl: pLink.shortUrl },
-      data: { clicks: pLink.clicks + 1 },
+      data: { clicks: { increment: 1 } },
     });
     return response;
   },
